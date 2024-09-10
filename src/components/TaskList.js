@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { TaskCard } from '../components/TaskCard';
 import { BoxCard } from "./BoxCard";
+import './TaskList.css';
 
-export const TaskList = () => {
+export const TaskList = ({info}) => {
   const [tasks, setTasks] = useState([
     {id: 1, name: "Brush your teeth", completed: false },
     {id: 2, name: "Make your bed", completed: false},
@@ -16,12 +17,12 @@ export const TaskList = () => {
   }
 
   return (
-    <>
+    <section className='tasklist'>
       <h1>Task List</h1>
       <ul>
         <button className="trigger" onClick={() => setShow(!show)}>Toggle</button>
         { show && tasks.map((task) => (
-          < TaskCard key={task.id} task={task} handleDelete={handleDelete}/>
+          < TaskCard key={task.id} info={info} task={task} handleDelete={handleDelete}/>
         ))}
       </ul>
 
@@ -50,6 +51,6 @@ export const TaskList = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, ducimus.
         </p>
       </BoxCard>
-    </>
+    </section>
   )
 }
