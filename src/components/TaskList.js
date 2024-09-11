@@ -1,56 +1,31 @@
-import { useState } from "react";
-import { TaskCard } from '../components/TaskCard';
-import { BoxCard } from "./BoxCard";
-import './TaskList.css';
+import { useState } from 'react';
+import { TaskCard } from './TaskCard';
+import "./TaskList.css";
+import "./AddTask.css";
 
-export const TaskList = ({info}) => {
-  const [tasks, setTasks] = useState([
-    {id: 1, name: "Brush your teeth", completed: false },
-    {id: 2, name: "Make your bed", completed: false},
-    {id: 3, name: "Study", completed: true}
-  ]);
+export const TaskList = () => {
+    const [tasks, setTasks] = useState([
+        {id: 5271, name: "Study React", completed: true},
+        {id: 7825, name: "Apply for jobs", completed: false},
+        {id: 8391, name: "Go to the gym", completed: false}
+    ]);
+    const [show, setShow] = useState(true);
 
-  const [show, setShow] = useState(true);
-
-  function handleDelete(id) {
-    setTasks(tasks.filter(task =>task.id !== id));
-  }
+    function handleDelete(id){
+        setTasks(tasks.filter(task => task.id !== id));
+    }
 
   return (
     <section className='tasklist'>
-      <h1>Task List</h1>
-      <ul>
-        <button className="trigger" onClick={() => setShow(!show)}>Toggle</button>
-        { show && tasks.map((task) => (
-          < TaskCard key={task.id} info={info} task={task} handleDelete={handleDelete}/>
-        ))}
-      </ul>
-
-      <BoxCard result='success'>
-        <p className="title">Lorem ipsum dolor sit amet.</p>
-        <p className="descrition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quo.</p>
-      </BoxCard>
-
-      {/* <div className="box warning">
-        <p className="title">Lorem ipsum dolor sit.</p>
-        <p className="descrition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quo.</p>
-      </div>
-      <div className="box alert">
-        <p className="title">Lorem, ipsum.</p>
-        <p className="descrition">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quo.</p>
-      </div> */}
-
-      <BoxCard result='warning'>
-        <p className="title">
-          Lorem ipsum dolor sit.
-        </p>
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus est repellendus laboriosam ullam aut pariatur doloremque neque quisquam tenetur nobis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, ducimus.
-        </p>
-      </BoxCard>
+        <ul>
+            <div className='header'>
+                <h1>TaskList</h1>
+                <button className='trigger' onClick={() => setShow(!show)}>{ show ? "Hide Tasks" : "Show Tasks"}</button>
+            </div>
+            { show && tasks.map((task) => (
+                <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
+            )) }
+        </ul>
     </section>
   )
 }

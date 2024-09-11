@@ -34,3 +34,7 @@
 .hidden{
   display: none;
 }
+
+.box button {
+  width: 300px;
+}
