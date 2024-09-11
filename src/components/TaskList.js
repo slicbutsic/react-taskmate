@@ -3,12 +3,7 @@ import { TaskCard } from './TaskCard';
 import "./TaskList.css";
 import "./AddTask.css";
 
-export const TaskList = () => {
-    const [tasks, setTasks] = useState([
-        {id: 5271, name: "Study React", completed: true},
-        {id: 7825, name: "Apply for jobs", completed: false},
-        {id: 8391, name: "Go to the gym", completed: false}
-    ]);
+export const TaskList = ({tasks, setTasks}) => {
     const [show, setShow] = useState(true);
 
     function handleDelete(id){
